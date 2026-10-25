@@ -10,3 +10,10 @@ CREATE TABLE IF NOT EXISTS Staff (
     PasswordHash VARCHAR(255) NOT NULL
 );
 
+-- Trainer Table
+CREATE TABLE IF NOT EXISTS Trainer (
+    TrainerID INT AUTO_INCREMENT PRIMARY KEY,
+    TrainerName VARCHAR(100) NOT NULL
+);
+
+
