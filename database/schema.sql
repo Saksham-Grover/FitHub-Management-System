@@ -32,3 +32,15 @@ CREATE TABLE IF NOT EXISTS Class (
     INDEX idx_class_search (ClassType, DayOfWeek)
 );
 
+-- Member Table
+CREATE TABLE IF NOT EXISTS Member (
+    MemberID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Phone VARCHAR(20),
+    Email VARCHAR(100),
+    MembershipType ENUM('Casual', 'Monthly', 'Annual') NOT NULL,
+    StartDate DATE NOT NULL,
+    INDEX idx_member_name (LastName, FirstName)
+);
+
