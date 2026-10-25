@@ -16,4 +16,19 @@ CREATE TABLE IF NOT EXISTS Trainer (
     TrainerName VARCHAR(100) NOT NULL
 );
 
+-- Class Table
+CREATE TABLE IF NOT EXISTS Class (
+    ClassID INT AUTO_INCREMENT PRIMARY KEY,
+    ClassName VARCHAR(100) NOT NULL,
+    ClassType VARCHAR(50) NOT NULL,
+    TrainerID INT NOT NULL,
+    DayOfWeek VARCHAR(15) NOT NULL,
+    StartTime TIME NOT NULL,
+    Capacity INT NOT NULL,
+    Fee DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (TrainerID) REFERENCES Trainer(TrainerID),
+    CHECK (Capacity > 0),
+    CHECK (Fee >= 0),
+    INDEX idx_class_search (ClassType, DayOfWeek)
+);
 
