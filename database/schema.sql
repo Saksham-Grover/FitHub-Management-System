@@ -44,3 +44,23 @@ CREATE TABLE IF NOT EXISTS Member (
     INDEX idx_member_name (LastName, FirstName)
 );
 
+-- Booking Table
+CREATE TABLE IF NOT EXISTS Booking (
+    BookingID INT AUTO_INCREMENT PRIMARY KEY,
+    MemberID INT NOT NULL,
+    ClassID INT NOT NULL,
+    ClassDate DATE NOT NULL,
+    BookingDateTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    BookingStatus ENUM('Booked', 'Cancelled') NOT NULL DEFAULT 'Booked',
+    AttendanceStatus ENUM('Pending', 'Attended', 'No-show')
+        NOT NULL DEFAULT 'Pending',
+    CancellationDateTime DATETIME NULL,
+    LateCancellationFee DECIMAL(10,2) NOT NULL DEFAULT 0,
+    NoShowFee DECIMAL(10,2) NOT NULL DEFAULT 0,
+
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID),
+    FOREIGN KEY (ClassID) REFERENCES Class(ClassID),
+
+    UNIQUE (MemberID, ClassID, ClassDate),
+    INDEX idx_booking_capacity (ClassID, ClassDate, BookingStatus)
+);
