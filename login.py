@@ -5,9 +5,12 @@ import bcrypt
 import mysql.connector
 
 from db_config import get_connection
+from main_menu import show_main_menu
 
+login_successful = False
 
 def login():
+    global login_successful
     # Get the Staff ID and password entered by the user.
     staff_id = staff_id_entry.get().strip()
     password = password_entry.get()
@@ -34,6 +37,9 @@ def login():
             password.encode("utf-8"),
             staff[0].encode("utf-8")
         ):
+            # Remember that the staff member logged in successfully.
+            login_successful = True
+            # Close the login window.
             messagebox.showinfo("Success", "Login successful!")
             root.destroy()
         else:
@@ -75,3 +81,7 @@ password_entry.pack(pady=8)
 tk.Button(root,text="Login",command=login,bg="#2980b9",fg="white",width=15).pack(pady=20)
 
 root.mainloop()
+
+# Open the management menu after a successful login.
+if login_successful:
+    show_main_menu()
