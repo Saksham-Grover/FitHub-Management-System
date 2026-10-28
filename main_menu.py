@@ -12,9 +12,18 @@ def show_main_menu():
 
     # Show the heading at the top.
     tk.Label(root,text="Select Management Option",font=("Arial", 18, "bold"),bg="#2c3e50",fg="white").pack(pady=30)
-    # These buttons will connect to the other modules later.
+    # Connect the management buttons to their modules.
+
     def open_management(option):
-        messagebox.showinfo("FitHub",f"{option} will be connected later.")
+        if option == "Member Management":
+            from member_management import show_member_management
+            show_member_management(root)
+        else:
+            messagebox.showinfo(
+                "FitHub",
+                f"{option} will be connected later."
+            )
+
     # Add the three management buttons.
     for option in ["Class Management","Member Management","Booking Management"]:tk.Button(root,text=option,width=25,command=lambda name=option: open_management(name)).pack(pady=10)
 
