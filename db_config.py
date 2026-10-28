@@ -8,8 +8,8 @@ def get_connection():
         host="127.0.0.1",
         # Log in with the MySQL root user.
         user="root",
-        # Replace this with your actual MySQL password.
-        password="SQL-PASSWORD",
+        # No password set for root on this machine (uses socket auth).
+        password="",
         # Use the FitHub database for the connection.
         database="fithub_db"
     )
