@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS Booking (
     ClassID INT NOT NULL,
     ClassDate DATE NOT NULL,
     BookingDateTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    BookingStatus ENUM('Booked', 'Cancelled') NOT NULL DEFAULT 'Booked',
+    BookingStatus ENUM('Booked', 'Cancelled', 'Late Cancel') NOT NULL DEFAULT 'Booked',
     AttendanceStatus ENUM('Pending', 'Attended', 'No-show')
         NOT NULL DEFAULT 'Pending',
     CancellationDateTime DATETIME NULL,

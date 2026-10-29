@@ -1,3 +1,4 @@
+
 import tkinter as tk
 from tkinter import messagebox
 
@@ -22,6 +23,10 @@ def show_main_menu():
         elif option == "Member Management":
             from member_management import show_member_management
             show_member_management(root)
+
+        elif option == "Booking Management":
+            from booking_management import BookingManagement
+            BookingManagement(tk.Toplevel(root))
 
         else:
             messagebox.showinfo(
