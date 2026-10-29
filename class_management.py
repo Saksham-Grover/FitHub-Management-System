@@ -118,7 +118,7 @@ class ClassManagement:
     # Display classes, including the search and fee filters.
     def load_classes(self):
         sql='''SELECT c.ClassID,c.ClassName,c.ClassType,t.TrainerName,c.DayOfWeek,
-          TIME_FORMAT(c.StartTime,'%%H:%%i'),c.Capacity,c.Fee
+          TIME_FORMAT(c.StartTime,'%H:%i'),c.Capacity,c.Fee
           FROM Class c JOIN Trainer t ON c.TrainerID=t.TrainerID WHERE 1=1'''
         params=[]
         term=self.vars['search'].get().strip()

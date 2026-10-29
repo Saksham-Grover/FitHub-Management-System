@@ -15,9 +15,14 @@ def show_main_menu():
     # Connect the management buttons to their modules.
 
     def open_management(option):
-        if option == "Member Management":
+        if option == "Class Management":
+            from class_management import show_class_management
+            show_class_management(root)
+
+        elif option == "Member Management":
             from member_management import show_member_management
             show_member_management(root)
+
         else:
             messagebox.showinfo(
                 "FitHub",
